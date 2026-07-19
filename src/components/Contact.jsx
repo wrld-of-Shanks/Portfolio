@@ -97,32 +97,32 @@ export default function Contact() {
           initial={{ y: 40, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-wrap gap-4 justify-center mb-12"
+          className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center mb-12"
         >
           <a href="/Shankar_Darur_CV.pdf" download
-            className="inline-flex items-center gap-2 px-8 py-3 font-mono text-[0.72rem] tracking-[0.1em] uppercase transition-all duration-200 no-underline"
-            style={{ background: '#C40000', color: '#FFFFFF', border: '1px solid #C40000' }}
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 font-mono text-[0.72rem] tracking-[0.1em] uppercase transition-all duration-200 no-underline"
+            style={{ background: '#C40000', color: '#FFFFFF', border: '1px solid #C40000', minHeight: 44 }}
             onMouseEnter={e => { e.target.style.background = 'transparent'; e.target.style.color = '#C40000' }}
             onMouseLeave={e => { e.target.style.background = '#C40000'; e.target.style.color = '#FFFFFF' }}>
             Download Resume →
           </a>
           <a href="https://github.com/wrld-of-Shanks" target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3 font-mono text-[0.72rem] tracking-[0.1em] uppercase transition-all duration-200 no-underline rounded-lg"
-            style={{ background: 'rgba(255,255,255,0.4)', color: '#0A0A0A', border: '1px solid rgba(0,0,0,0.15)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 font-mono text-[0.72rem] tracking-[0.1em] uppercase transition-all duration-200 no-underline rounded-lg"
+            style={{ background: 'rgba(255,255,255,0.4)', color: '#0A0A0A', border: '1px solid rgba(0,0,0,0.15)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', minHeight: 44 }}
             onMouseEnter={e => { e.target.style.background = 'rgba(255,255,255,0.7)'; e.target.style.borderColor = '#0A0A0A' }}
             onMouseLeave={e => { e.target.style.background = 'rgba(255,255,255,0.4)'; e.target.style.borderColor = 'rgba(0,0,0,0.15)' }}>
             GitHub
           </a>
           <a href="https://www.linkedin.com/in/shankar-m-darur07/" target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3 font-mono text-[0.72rem] tracking-[0.1em] uppercase transition-all duration-200 no-underline rounded-lg"
-            style={{ background: 'rgba(255,255,255,0.4)', color: '#0A0A0A', border: '1px solid rgba(0,0,0,0.15)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 font-mono text-[0.72rem] tracking-[0.1em] uppercase transition-all duration-200 no-underline rounded-lg"
+            style={{ background: 'rgba(255,255,255,0.4)', color: '#0A0A0A', border: '1px solid rgba(0,0,0,0.15)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', minHeight: 44 }}
             onMouseEnter={e => { e.target.style.background = 'rgba(255,255,255,0.7)'; e.target.style.borderColor = '#0A0A0A' }}
             onMouseLeave={e => { e.target.style.background = 'rgba(255,255,255,0.4)'; e.target.style.borderColor = 'rgba(0,0,0,0.15)' }}>
             LinkedIn
           </a>
           <a href="https://www.instagram.com/wrld.of_shanks?igsh=bXZ3YjF1ZnBvbGo2" target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3 font-mono text-[0.72rem] tracking-[0.1em] uppercase transition-all duration-200 no-underline rounded-lg"
-            style={{ background: 'rgba(255,255,255,0.4)', color: '#0A0A0A', border: '1px solid rgba(0,0,0,0.15)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 font-mono text-[0.72rem] tracking-[0.1em] uppercase transition-all duration-200 no-underline rounded-lg"
+            style={{ background: 'rgba(255,255,255,0.4)', color: '#0A0A0A', border: '1px solid rgba(0,0,0,0.15)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', minHeight: 44 }}
             onMouseEnter={e => { e.target.style.background = 'rgba(255,255,255,0.7)'; e.target.style.borderColor = '#0A0A0A' }}
             onMouseLeave={e => { e.target.style.background = 'rgba(255,255,255,0.4)'; e.target.style.borderColor = 'rgba(0,0,0,0.15)' }}>
             Instagram
@@ -142,10 +142,10 @@ export default function Contact() {
           }}
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <span className="font-mono text-[0.68rem]" style={{ color: '#0A0A0A' }}>
+            <span className="font-mono text-[0.68rem] text-center md:text-left" style={{ color: '#0A0A0A' }}>
               © 2026 Shankar Darur · Built with intent.
             </span>
-            <div className="flex gap-6">
+            <div className="flex flex-wrap gap-4 sm:gap-6 justify-center">
               {[
                 { label: 'Top', href: '#hero' },
                 { label: 'GitHub', href: 'https://github.com/wrld-of-Shanks' },

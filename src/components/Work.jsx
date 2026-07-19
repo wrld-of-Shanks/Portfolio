@@ -170,7 +170,7 @@ export default function Work() {
         </AnimatePresence>
 
         {/* Horizontal video strip */}
-        <div className="mt-16 flex gap-3 overflow-x-auto pb-4" style={{ scrollbarWidth: 'none' }}>
+        <div className="mt-12 sm:mt-16 flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory" style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
           {[
             { src: '/assets/vid-3.mp4', label: 'Reel 01' },
             { src: '/assets/vid-5.mp4', label: 'Reel 02' },
@@ -182,10 +182,10 @@ export default function Work() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="flex-shrink-0 w-[300px] md:w-[400px] aspect-video relative overflow-hidden group"
+              className="flex-shrink-0 w-[260px] sm:w-[300px] md:w-[400px] aspect-video relative overflow-hidden group snap-start"
               style={{ border: '1px solid rgba(242,242,242,0.06)' }}
             >
-              <video autoPlay loop muted playsInline
+              <video autoPlay loop muted playsInline loading="lazy" decoding="async"
                 className="w-full h-full object-cover opacity-40 group-hover:opacity-70 transition-opacity duration-500"
                 style={{ filter: 'grayscale(1) contrast(1.2)' }}>
                 <source src={v.src} type="video/mp4" />

@@ -9,6 +9,7 @@ import Gallery from './components/Gallery'
 import Personality from './components/Personality'
 import Hobby from './components/Hobby'
 import Contact from './components/Contact'
+import MusicToggle from './components/MusicToggle'
 
 const sectionIds = ['hero', 'about', 'experience', 'projects', 'blogs', 'personality', 'hobbies', 'contact']
 
@@ -71,12 +72,13 @@ export default function App() {
       {/* Navigation */}
       <Nav currentSection={currentSection} />
 
-      {/* Fixed habit tracker video — top right */}
+      {/* Fixed habit tracker video — top right, hidden on small mobile */}
       <video
         autoPlay
         muted
         loop
         playsInline
+        className="hidden sm:block"
         style={{
           position: 'fixed',
           top: '48px',
@@ -91,8 +93,8 @@ export default function App() {
         <source src="/assets/480162cdb5de45bab663c0f46d74b1df.webm" type="video/webm" />
       </video>
 
-      {/* Top-left logo */}
       {/* Sections */}
+      <MusicToggle />
       <main className="relative z-10">
         <section id="hero">
           <Hero scrollProgress={scrollProgress} />

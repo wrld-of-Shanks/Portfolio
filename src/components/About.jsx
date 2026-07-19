@@ -29,7 +29,7 @@ export default function About() {
       id="about"
     >
       {/* Image collage bg */}
-      <div className="absolute inset-0 z-0 grid grid-cols-4 grid-rows-3">
+      <div className="absolute inset-0 z-0 grid grid-cols-3 sm:grid-cols-4 grid-rows-3">
         <img src="/assets/home-x.jpeg" alt="" className="w-full h-full object-cover" />
         <img src="/assets/click.jpeg" alt="" className="w-full h-full object-cover" />
         <img src="/assets/branding.jpeg" alt="" className="w-full h-full object-cover" />
@@ -54,7 +54,7 @@ export default function About() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-10 max-w-[1200px] w-full mx-auto px-8 md:px-16 py-24"
       >
-        <div className="about-inner" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'center' }}>
+        <div className="about-inner grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
 
           {/* Left: Text + Stats */}
           <div>
@@ -107,7 +107,7 @@ export default function About() {
               and <strong style={{ color: '#C40000' }}> SeatSip</strong> (F&B startup).
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginTop: '2rem' }}>
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 mt-8">
               {stats.map((s, i) => (
                 <motion.div
                   key={i}

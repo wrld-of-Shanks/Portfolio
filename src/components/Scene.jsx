@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useEffect } from 'react'
+import React, { useRef, useMemo, useEffect, useState, useCallback } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import {
@@ -12,7 +12,20 @@ import {
 
 const ACCENT = new THREE.Color(0xC40000)
 
-function DitheredSculpture({ scrollProgress, mousePos }) {
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' && window.innerWidth < 768
+  )
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)')
+    const handler = (e) => setIsMobile(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+  return isMobile
+}
+
+function DitheredSculpture({ scrollProgress, mousePos, isMobile }) {
   const meshRef = useRef()
   const materialRef = useRef()
 
@@ -61,7 +74,8 @@ function DitheredSculpture({ scrollProgress, mousePos }) {
   })
 
   const geometry = useMemo(() => {
-    const geo = new THREE.IcosahedronGeometry(1.6, 6)
+    const detail = isMobile ? 3 : 6
+    const geo = new THREE.IcosahedronGeometry(1.6, detail)
     const posAttr = geo.attributes.position
     const arr = posAttr.array
 
@@ -88,7 +102,7 @@ function DitheredSculpture({ scrollProgress, mousePos }) {
 
     geo.computeVertexNormals()
     return geo
-  }, [])
+  }, [isMobile])
 
   return (
     <mesh ref={meshRef} geometry={geometry}>
@@ -102,9 +116,9 @@ function DitheredSculpture({ scrollProgress, mousePos }) {
   )
 }
 
-function RedParticles({ scrollProgress }) {
+function RedParticles({ scrollProgress, isMobile }) {
   const pointsRef = useRef()
-  const count = 200
+  const count = isMobile ? 80 : 200
 
   const { positions, sizes, phases, speeds } = useMemo(() => {
     const positions = new Float32Array(count * 3)
@@ -122,7 +136,7 @@ function RedParticles({ scrollProgress }) {
     }
 
     return { positions, sizes, phases, speeds }
-  }, [])
+  }, [count])
 
   const uniforms = useMemo(() => ({
     uTime: { value: 0 },
@@ -232,35 +246,53 @@ function ScanPlane({ scrollProgress }) {
   )
 }
 
-function SceneContent({ scrollProgress, mousePos }) {
+function SceneContent({ scrollProgress, mousePos, isMobile }) {
   return (
     <>
       <ambientLight intensity={0.3} />
       <directionalLight position={[3, 5, 5]} intensity={0.8} />
       <pointLight position={[-3, 2, 3]} color={ACCENT} intensity={0.5} />
 
-      <DitheredSculpture scrollProgress={scrollProgress} mousePos={mousePos} />
-      <RedParticles scrollProgress={scrollProgress} />
+      <DitheredSculpture scrollProgress={scrollProgress} mousePos={mousePos} isMobile={isMobile} />
+      <RedParticles scrollProgress={scrollProgress} isMobile={isMobile} />
       <WireframeRing scrollProgress={scrollProgress} />
-      <ScanPlane scrollProgress={scrollProgress} />
+      {!isMobile && <ScanPlane scrollProgress={scrollProgress} />}
     </>
   )
 }
 
 export default function Scene({ scrollProgress, mousePos }) {
+  const containerRef = useRef()
+  const [inView, setInView] = useState(true)
+  const isMobile = useIsMobile()
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <Canvas
-      className="scene-canvas"
-      camera={{ position: [0, 0, 5], fov: 45 }}
-      gl={{
-        antialias: true,
-        alpha: true,
-        powerPreference: 'high-performance',
-      }}
-      style={{ pointerEvents: 'none' }}
-      dpr={[1, 2]}
-    >
-      <SceneContent scrollProgress={scrollProgress} mousePos={mousePos} />
-    </Canvas>
+    <div ref={containerRef} className="scene-canvas">
+      <Canvas
+        camera={{ position: [0, 0, 5], fov: 45 }}
+        gl={{
+          antialias: !isMobile,
+          alpha: true,
+          powerPreference: 'high-performance',
+        }}
+        style={{ pointerEvents: 'none' }}
+        dpr={isMobile ? [1, 1] : [1, 1.5]}
+        frameloop={inView ? 'always' : 'never'}
+      >
+        <SceneContent scrollProgress={scrollProgress} mousePos={mousePos} isMobile={isMobile} />
+      </Canvas>
+    </div>
   )
 }

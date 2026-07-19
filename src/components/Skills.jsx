@@ -68,7 +68,7 @@ export default function Skills() {
           </h2>
         </motion.div>
 
-        <div className="relative pl-8" style={{ borderLeft: '1px solid rgba(196,0,0,0.3)' }}>
+        <div className="relative pl-6 sm:pl-8" style={{ borderLeft: '1px solid rgba(196,0,0,0.3)' }}>
           {timeline.map((item, i) => (
             <motion.div
               key={i}
@@ -84,7 +84,7 @@ export default function Skills() {
               {/* Card */}
               <motion.div
                 whileHover={{ x: 4, transition: { duration: 0.2 } }}
-                className="p-6"
+                className="p-4 sm:p-6"
                 style={{ background: '#FFFFFF', border: '1px solid rgba(196,0,0,0.15)', cursor: 'default' }}
               >
                 <h3 className="font-display text-[1.6rem] tracking-[0.06em] mb-1" style={{ color: '#C40000' }}>{item.role}</h3>

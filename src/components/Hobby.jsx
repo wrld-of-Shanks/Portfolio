@@ -133,7 +133,7 @@ export default function Hobby() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ alignItems: 'stretch' }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6" style={{ alignItems: 'stretch' }}>
           {hobbies.map((hobby, i) => (
             <motion.div
               key={i}

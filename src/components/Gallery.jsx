@@ -61,7 +61,7 @@ export default function Gallery() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-10">
           {blogs.map((blog, i) => (
             <motion.div
               key={i}
@@ -69,7 +69,7 @@ export default function Gallery() {
               animate={isInView ? { y: 0, opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.2 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="group p-7 cursor-pointer"
+              className="group p-5 sm:p-7 cursor-pointer"
               style={{
                 background: 'rgba(255,255,255,0.7)',
                 border: '1px solid rgba(255,255,255,0.8)',
