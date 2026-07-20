@@ -1,50 +1,109 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 
 export default function MusicToggle() {
   const audioRef = useRef(null)
-  const [isPlaying, setIsPlaying] = useState(true)
+  const ctxRef = useRef(null)
+  const sourceRef = useRef(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [ready, setReady] = useState(false)
 
-  useEffect(() => {
+  const getCtx = useCallback(() => {
+    if (!ctxRef.current) {
+      const AudioContext = window.AudioContext || window.webkitAudioContext
+      ctxRef.current = new AudioContext()
+    }
+    return ctxRef.current
+  }, [])
+
+  const connectSource = useCallback(() => {
+    if (sourceRef.current) return
+    const audio = audioRef.current
+    if (!audio) return
+    const ctx = getCtx()
+    const source = ctx.createMediaElementSource(audio)
+    source.connect(ctx.destination)
+    sourceRef.current = source
+  }, [getCtx])
+
+  const tryAutoPlay = useCallback(() => {
     const audio = audioRef.current
     if (!audio) return
 
     const savedTime = localStorage.getItem('music-time')
     if (savedTime) audio.currentTime = parseFloat(savedTime)
 
-    const tryPlay = () => {
-      audio.play().then(() => setIsPlaying(true)).catch(() => {})
+    connectSource()
+    const ctx = getCtx()
+
+    const resumeAndPlay = () => {
+      if (ctx.state === 'suspended') {
+        ctx.resume().then(() => {
+          audio.play().then(() => setIsPlaying(true)).catch(() => {})
+        })
+      } else {
+        audio.play().then(() => setIsPlaying(true)).catch(() => {})
+      }
     }
 
     if (audio.readyState >= 2) {
-      tryPlay()
+      resumeAndPlay()
     } else {
-      audio.addEventListener('canplaythrough', tryPlay, { once: true })
+      audio.addEventListener('canplaythrough', resumeAndPlay, { once: true })
+    }
+  }, [connectSource, getCtx])
+
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
+
+    audio.load()
+
+    const onFirstInteraction = () => {
+      tryAutoPlay()
+      document.removeEventListener('click', onFirstInteraction)
+      document.removeEventListener('touchstart', onFirstInteraction)
     }
 
+    document.addEventListener('click', onFirstInteraction, { once: true })
+    document.addEventListener('touchstart', onFirstInteraction, { once: true })
+
     const saveTime = () => {
-      localStorage.setItem('music-time', audio.currentTime.toString())
+      if (audio.currentTime > 0) {
+        localStorage.setItem('music-time', audio.currentTime.toString())
+      }
     }
     window.addEventListener('beforeunload', saveTime)
     audio.addEventListener('pause', saveTime)
     audio.addEventListener('timeupdate', () => {
-      if (!audio.paused) localStorage.setItem('music-time', audio.currentTime.toString())
+      if (!audio.paused) saveTime()
     })
 
     return () => {
+      document.removeEventListener('click', onFirstInteraction)
+      document.removeEventListener('touchstart', onFirstInteraction)
       window.removeEventListener('beforeunload', saveTime)
       audio.removeEventListener('pause', saveTime)
     }
-  }, [])
+  }, [tryAutoPlay])
 
   const toggle = () => {
     const audio = audioRef.current
     if (!audio) return
+    const ctx = getCtx()
+
     if (isPlaying) {
       audio.pause()
       setIsPlaying(false)
     } else {
-      audio.play().then(() => setIsPlaying(true)).catch(() => {})
+      if (!sourceRef.current) connectSource()
+      if (ctx.state === 'suspended') {
+        ctx.resume().then(() => {
+          audio.play().then(() => setIsPlaying(true)).catch(() => {})
+        })
+      } else {
+        audio.play().then(() => setIsPlaying(true)).catch(() => {})
+      }
     }
   }
 
@@ -62,7 +121,7 @@ export default function MusicToggle() {
 
   return (
     <>
-      <audio ref={audioRef} loop preload="auto" autoPlay src="/assets/theme.mp3" />
+      <audio ref={audioRef} loop preload="auto" src="/assets/theme.mp3" />
       <motion.button
         onClick={toggle}
         initial={{ opacity: 0 }}

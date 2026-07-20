@@ -94,7 +94,7 @@ function DitheredSculpture({ scrollProgress, mousePos, isMobile }) {
 
       const displacement = noise1 + noise2 + noise3 + headBulge * 0.2 - neckPinch + shoulderSpread
 
-      const r = Math.sqrt(x * x + z * z)
+      const r = Math.sqrt(x * x + z * z) || 1e-6
       arr[i * 3] += (x / r) * displacement * 0.5
       arr[i * 3 + 1] += displacement * 0.3
       arr[i * 3 + 2] += (z / r) * displacement * 0.5

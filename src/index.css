@@ -194,7 +194,17 @@ body {
   height: 138dvh;
 }
 @media (min-width: 640px) {
-  .hero-photo-mobile {
+.splash-card img {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-card img {
+    animation: none !important;
+  }
+}
+
+.hero-photo-mobile {
     height: 100%;
   }
 }

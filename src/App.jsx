@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react'
+import SplashScreen from './components/SplashScreen'
 import Scene from './components/Scene'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
@@ -17,6 +18,7 @@ export default function App() {
   const scrollProgress = useRef(0)
   const mousePos = useRef({ x: 0, y: 0 })
   const [currentSection, setCurrentSection] = useState('hero')
+  const [showSplash, setShowSplash] = useState(true)
   const lastScrollY = useRef(0)
   const rafId = useRef(null)
 
@@ -58,6 +60,11 @@ export default function App() {
 
   return (
     <div className="relative bg-base min-h-screen">
+      {/* Splash screen */}
+      {showSplash && (
+        <SplashScreen onComplete={() => setShowSplash(false)} />
+      )}
+
       {/* Global 3D canvas layer */}
       <Scene scrollProgress={scrollProgress} mousePos={mousePos} />
 
