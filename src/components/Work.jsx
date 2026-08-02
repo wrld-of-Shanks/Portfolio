@@ -51,6 +51,7 @@ export default function Work() {
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 })
   const [projectsList, setProjectsList] = useState(projectData.projects)
   const [isLoading, setIsLoading] = useState(false)
+  const [showAllProjects, setShowAllProjects] = useState(false)
 
   useEffect(() => {
     async function fetchGitHubRepos() {
@@ -193,7 +194,10 @@ export default function Work() {
           {tabs.map((tab, i) => (
             <motion.button
               key={i}
-              onClick={() => setActiveTab(tabKeys[i])}
+              onClick={() => {
+                setActiveTab(tabKeys[i])
+                setShowAllProjects(false)
+              }}
               className="font-mono text-[0.72rem] tracking-[0.1em] uppercase py-3 px-5 relative"
               style={{
                 background: 'transparent',
@@ -226,7 +230,7 @@ export default function Work() {
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
           >
-            {(activeTab === 'projects' ? projectsList : projectData[activeTab]).map((project, i) => (
+            {(activeTab === 'projects' ? (showAllProjects ? projectsList : projectsList.slice(0, 4)) : projectData[activeTab]).map((project, i) => (
               <motion.div
                 key={`${activeTab}-${i}`}
                 initial={{ y: 20, opacity: 0 }}
@@ -300,6 +304,36 @@ export default function Work() {
             ))}
           </motion.div>
         </AnimatePresence>
+
+        {/* See More / Back toggle button */}
+        {activeTab === 'projects' && projectsList.length > 4 && (
+          <div className="flex justify-center mt-10">
+            <motion.button
+              onClick={() => {
+                if (showAllProjects) {
+                  setShowAllProjects(false)
+                  sectionRef.current?.scrollIntoView({ behavior: 'smooth' })
+                } else {
+                  setShowAllProjects(true)
+                }
+              }}
+              className="font-mono text-[0.72rem] tracking-[0.15em] uppercase py-3 px-8 relative"
+              style={{
+                background: 'transparent',
+                border: '1px solid rgba(242, 242, 242, 0.15)',
+                color: '#F2F2F2',
+                cursor: 'pointer',
+              }}
+              whileHover={{
+                borderColor: '#C40000',
+                backgroundColor: 'rgba(196, 0, 0, 0.08)',
+              }}
+              whileTap={{ scale: 0.97 }}
+            >
+              {showAllProjects ? 'Back' : 'See More'}
+            </motion.button>
+          </div>
+        )}
 
         {/* Horizontal video strip */}
         <div className="mt-12 sm:mt-16 flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory" style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>

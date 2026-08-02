@@ -1404,18 +1404,110 @@ const skillObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.skills-wrap').forEach(el => skillObserver.observe(el));
 
 // ─── TABS ───
+let allProjectsData = [];
+let showAllProjectsLocal = false;
+
 function switchTab(name) {
   document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   event.target.classList.add('active');
+
+  if (name === 'projects' && allProjectsData.length > 0) {
+    showAllProjectsLocal = false;
+    renderProjectsTab();
+  }
+
   // Re-trigger card reveals
   document.querySelectorAll('#tab-' + name + ' .project-card').forEach((el, i) => {
     el.classList.remove('visible');
     setTimeout(() => el.classList.add('visible'), i * 80);
   });
 }
+
 // ─── GITHUB API INTEGRATION ───
+function renderProjectsTab() {
+  const container = document.getElementById('tab-projects');
+  if (!container) return;
+
+  const displayList = showAllProjectsLocal ? allProjectsData : allProjectsData.slice(0, 4);
+
+  let cardsHtml = displayList.map((project, idx) => {
+    const num = String(idx + 1).padStart(2, '0');
+    const archHtml = project.arch ? `<div class="project-arch">${project.arch}</div>` : '';
+    const tagsHtml = project.tags.map(t => `<span class="tag">${t}</span>`).join('');
+    
+    let linksHtml = '';
+    
+    if (project.visitUrl) {
+      linksHtml += `
+        <a href="${project.visitUrl}" target="_blank" rel="noopener noreferrer" class="project-link" style="border: 1px solid rgba(242,242,242,0.12); padding: 0.5rem 1rem; display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(242,242,242,0.02); text-decoration: none; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: #F2F2F2; transition: all 0.3s; margin-right: 0.8rem;" onmouseenter="this.style.borderColor='#C40000'; this.style.background='rgba(196,0,0,0.08)'" onmouseleave="this.style.borderColor='rgba(242,242,242,0.12)'; this.style.background='rgba(242,242,242,0.02)'">
+          Visit Repo
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 0.3s">
+            <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </a>
+      `;
+    }
+
+    if (project.links && project.links.length > 0) {
+      project.links.forEach(l => {
+        if (l.label.toLowerCase() !== 'github') {
+          linksHtml += `<a href="${l.url}" target="_blank" rel="noopener noreferrer" class="project-link" style="align-self: center;">${l.label} →</a>`;
+        }
+      });
+    }
+
+    return `
+      <div class="project-card visible" style="opacity: 1; transform: translateY(0);">
+        <div class="project-num">${num}</div>
+        <div class="project-name">${project.name}</div>
+        <div class="project-desc">${project.desc}</div>
+        ${archHtml}
+        <div class="exp-tags">
+          ${tagsHtml}
+        </div>
+        <div class="project-footer" style="margin-top:auto; padding-top: 1.2rem;">
+          <div class="project-links">
+            ${linksHtml}
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  if (allProjectsData.length > 4) {
+    cardsHtml += `
+      <div style="grid-column: 1 / -1; display: flex; justify-content: center; margin-top: 2.5rem;">
+        <button id="toggle-projects-btn" style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.75rem 2.5rem; background: transparent; border: 1px solid rgba(242, 242, 242, 0.15); color: #F2F2F2; cursor: pointer; transition: all 0.3s;" onmouseenter="this.style.borderColor='#C40000'; this.style.background='rgba(196,0,0,0.08)'" onmouseleave="this.style.borderColor='rgba(242, 242, 242, 0.15)'; this.style.background='transparent'">
+          ${showAllProjectsLocal ? 'Back' : 'See More'}
+        </button>
+      </div>
+    `;
+  }
+
+  container.innerHTML = cardsHtml;
+
+  // Bind click listener for See More / Back button
+  const toggleBtn = document.getElementById('toggle-projects-btn');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      if (showAllProjectsLocal) {
+        showAllProjectsLocal = false;
+        renderProjectsTab();
+        document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+      } else {
+        showAllProjectsLocal = true;
+        renderProjectsTab();
+      }
+    });
+  }
+
+  container.querySelectorAll('.project-card').forEach((el, i) => {
+    observer.observe(el);
+  });
+}
+
 async function initGitHubIntegration() {
   const username = 'wrld-of-Shanks';
   const container = document.getElementById('tab-projects');
@@ -1512,54 +1604,8 @@ async function initGitHubIntegration() {
     }
   });
 
-  // 4. Render
-  container.innerHTML = finalList.map((project, idx) => {
-    const num = String(idx + 1).padStart(2, '0');
-    const archHtml = project.arch ? `<div class="project-arch">${project.arch}</div>` : '';
-    const tagsHtml = project.tags.map(t => `<span class="tag">${t}</span>`).join('');
-    
-    let linksHtml = '';
-    
-    if (project.visitUrl) {
-      linksHtml += `
-        <a href="${project.visitUrl}" target="_blank" rel="noopener noreferrer" class="project-link" style="border: 1px solid rgba(242,242,242,0.12); padding: 0.5rem 1rem; display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(242,242,242,0.02); text-decoration: none; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: #F2F2F2; transition: all 0.3s; margin-right: 0.8rem;" onmouseenter="this.style.borderColor='#C40000'; this.style.background='rgba(196,0,0,0.08)'" onmouseleave="this.style.borderColor='rgba(242,242,242,0.12)'; this.style.background='rgba(242,242,242,0.02)'">
-          Visit Repo
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 0.3s">
-            <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </a>
-      `;
-    }
-
-    if (project.links && project.links.length > 0) {
-      project.links.forEach(l => {
-        if (l.label.toLowerCase() !== 'github') {
-          linksHtml += `<a href="${l.url}" target="_blank" rel="noopener noreferrer" class="project-link" style="align-self: center;">${l.label} →</a>`;
-        }
-      });
-    }
-
-    return `
-      <div class="project-card visible" style="opacity: 1; transform: translateY(0);">
-        <div class="project-num">${num}</div>
-        <div class="project-name">${project.name}</div>
-        <div class="project-desc">${project.desc}</div>
-        ${archHtml}
-        <div class="exp-tags">
-          ${tagsHtml}
-        </div>
-        <div class="project-footer" style="margin-top:auto; padding-top: 1.2rem;">
-          <div class="project-links">
-            ${linksHtml}
-          </div>
-        </div>
-      </div>
-    `;
-  }).join('');
-
-  container.querySelectorAll('.project-card').forEach((el, i) => {
-    observer.observe(el);
-  });
+  allProjectsData = finalList;
+  renderProjectsTab();
 }
 
 // Init integration and animate cards
