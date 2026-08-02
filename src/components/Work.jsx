@@ -319,14 +319,15 @@ export default function Work() {
               }}
               className="font-mono text-[0.72rem] tracking-[0.15em] uppercase py-3 px-8 relative"
               style={{
-                background: 'transparent',
-                border: '1px solid rgba(242, 242, 242, 0.15)',
-                color: '#F2F2F2',
+                background: 'rgba(196, 0, 0, 0.08)',
+                border: '1px solid rgba(196, 0, 0, 0.5)',
+                color: '#C40000',
                 cursor: 'pointer',
               }}
               whileHover={{
+                backgroundColor: 'rgba(196, 0, 0, 0.18)',
                 borderColor: '#C40000',
-                backgroundColor: 'rgba(196, 0, 0, 0.08)',
+                color: '#F2F2F2',
               }}
               whileTap={{ scale: 0.97 }}
             >

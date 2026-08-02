@@ -1479,7 +1479,7 @@ function renderProjectsTab() {
   if (allProjectsData.length > 4) {
     cardsHtml += `
       <div style="grid-column: 1 / -1; display: flex; justify-content: center; margin-top: 2.5rem;">
-        <button id="toggle-projects-btn" style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.75rem 2.5rem; background: transparent; border: 1px solid rgba(242, 242, 242, 0.15); color: #F2F2F2; cursor: pointer; transition: all 0.3s;" onmouseenter="this.style.borderColor='#C40000'; this.style.background='rgba(196,0,0,0.08)'" onmouseleave="this.style.borderColor='rgba(242, 242, 242, 0.15)'; this.style.background='transparent'">
+        <button id="toggle-projects-btn" style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.75rem 2.5rem; background: rgba(196,0,0,0.08); border: 1px solid rgba(196,0,0,0.5); color: #C40000; cursor: pointer; transition: all 0.3s;" onmouseenter="this.style.borderColor='#C40000'; this.style.background='rgba(196,0,0,0.18)'; this.style.color='#F2F2F2'" onmouseleave="this.style.borderColor='rgba(196,0,0,0.5)'; this.style.background='rgba(196,0,0,0.08)'; this.style.color='#C40000'">
           ${showAllProjectsLocal ? 'Back' : 'See More'}
         </button>
       </div>
