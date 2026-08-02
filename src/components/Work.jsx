@@ -22,7 +22,7 @@ const projectData = {
       desc: 'Document Q&A system built with LangChain and ChromaDB. Upload any PDF and get accurate, cited answers via semantic search over the document.',
       arch: 'React → FastAPI → LangChain → ChromaDB → OpenAI',
       tags: ['LangChain', 'ChromaDB', 'OpenAI'],
-      links: [{ label: 'GitHub', url: '#' }, { label: 'Demo', url: '#' }],
+      links: [{ label: 'GitHub', url: 'https://github.com/wrld-of-Shanks/PDF-Chatbot' }, { label: 'Demo', url: '#' }],
     },
     {
       num: '04', name: 'SeatSip',
