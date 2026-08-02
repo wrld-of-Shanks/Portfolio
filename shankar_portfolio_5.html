@@ -1096,7 +1096,13 @@
         </div>
         <div class="project-footer" style="margin-top:1.2rem">
           <div class="project-links">
-            <a href="#" class="project-link">GitHub →</a>
+            <span class="project-link" style="border: 1px solid rgba(242,242,242,0.12); padding: 0.5rem 1rem; display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(242,242,242,0.02); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,242,242,0.5); cursor: default;">
+              Private Repo
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </span>
           </div>
         </div>
       </div>
@@ -1149,7 +1155,13 @@
         </div>
         <div class="project-footer" style="margin-top:1.2rem">
           <div class="project-links">
-            <a href="#" class="project-link">Website →</a>
+            <span class="project-link" style="border: 1px solid rgba(242,242,242,0.12); padding: 0.5rem 1rem; display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(242,242,242,0.02); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,242,242,0.5); cursor: default;">
+              Private Repo
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </span>
           </div>
         </div>
       </div>
@@ -1439,7 +1451,17 @@ function renderProjectsTab() {
     
     let linksHtml = '';
     
-    if (project.visitUrl) {
+    if (project.isPrivate || project.name.toLowerCase().includes('agribid') || project.name.toLowerCase().includes('seatsip')) {
+      linksHtml += `
+        <span class="project-link" style="border: 1px solid rgba(242,242,242,0.12); padding: 0.5rem 1rem; display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(242,242,242,0.02); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,242,242,0.5); cursor: default; margin-right: 0.8rem;">
+          Private Repo
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </span>
+      `;
+    } else if (project.visitUrl) {
       linksHtml += `
         <a href="${project.visitUrl}" target="_blank" rel="noopener noreferrer" class="project-link" style="border: 1px solid rgba(242,242,242,0.12); padding: 0.5rem 1rem; display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(242,242,242,0.02); text-decoration: none; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: #F2F2F2; transition: all 0.3s; margin-right: 0.8rem;" onmouseenter="this.style.borderColor='#C40000'; this.style.background='rgba(196,0,0,0.08)'" onmouseleave="this.style.borderColor='rgba(242,242,242,0.12)'; this.style.background='rgba(242,242,242,0.02)'">
           Visit Repo

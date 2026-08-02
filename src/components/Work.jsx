@@ -15,7 +15,7 @@ const projectData = {
       desc: 'Full-featured content management system for an agricultural B2B platform. JWT auth, RSS news integration, MySQL-backed REST API, live in production.',
       arch: 'React → Node/Express → MySQL → JWT → Render',
       tags: ['React', 'Node.js', 'MySQL', 'Production'],
-      links: [{ label: 'GitHub', url: '#' }],
+      isPrivate: true,
     },
     {
       num: '03', name: 'AI PDF Chatbot',
@@ -29,7 +29,7 @@ const projectData = {
       desc: 'F&B startup — table booking + digital ordering SaaS for restaurants. Full-stack app with QR-based menus, real-time order management, and analytics dashboard.',
       arch: 'Next.js → Node → PostgreSQL → Firebase → Vercel',
       tags: ['Startup', 'Next.js', 'PostgreSQL', 'SaaS'],
-      links: [{ label: 'Website', url: '#' }],
+      isPrivate: true,
     },
   ],
   designs: [
@@ -106,6 +106,13 @@ export default function Work() {
 
       // Match static projects with repos
       staticProjects.forEach((staticProj) => {
+        if (staticProj.isPrivate) {
+          mergedList.push({
+            ...staticProj
+          })
+          return
+        }
+
         const matchingRepo = sourceRepos.find(repo => {
           const sName = staticProj.name.toLowerCase().replace(/[^a-z0-9]/g, '')
           const rName = repo.name.toLowerCase().replace(/[^a-z0-9]/g, '')
@@ -276,7 +283,23 @@ export default function Work() {
                   </div>
                 </div>
 
-                {project.visitUrl && (
+                {project.isPrivate ? (
+                  <div
+                    className="inline-flex items-center gap-2 font-mono text-[0.68rem] tracking-[0.12em] uppercase py-2 px-4 w-fit select-none"
+                    style={{
+                      border: '1px solid rgba(242, 242, 242, 0.12)',
+                      color: 'rgba(242, 242, 242, 0.5)',
+                      background: 'rgba(242, 242, 242, 0.02)',
+                      cursor: 'default',
+                    }}
+                  >
+                    <span>Private Repo</span>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                  </div>
+                ) : project.visitUrl ? (
                   <motion.a
                     href={project.visitUrl}
                     target="_blank"
@@ -299,7 +322,7 @@ export default function Work() {
                       <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </motion.a>
-                )}
+                ) : null}
               </motion.div>
             ))}
           </motion.div>
