@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shankar Darur — AI Engineer</title>
+<title>Shankar M. Darur — AI & Machine Learning Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -447,6 +447,41 @@
     letter-spacing: 0.06em;
   }
 
+  #highlights {
+    padding: 8rem 3rem;
+  }
+  .highlights-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .highlight-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    padding: 1.8rem;
+    backdrop-filter: blur(12px);
+  }
+  .highlight-card h3 {
+    color: var(--accent);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.45rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 1rem;
+  }
+  .highlight-card ul {
+    display: grid;
+    gap: 0.85rem;
+    padding-left: 1.1rem;
+    color: rgba(245,245,240,0.72);
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+  .highlight-card li::marker { color: var(--accent); }
+
   /* ══════════════════════════════════════
      PROJECTS
   ══════════════════════════════════════ */
@@ -853,7 +888,7 @@
     .hero-side { align-items: flex-start; }
     .hero-tagline { text-align: left; }
     section { padding: 5rem 1.5rem; }
-    #about, #experience, #projects, #blogs, #contact { padding: 5rem 1.5rem; }
+    #about, #experience, #highlights, #projects, #blogs, #contact { padding: 5rem 1.5rem; }
   }
 </style>
 </head>
@@ -867,6 +902,7 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#highlights">Highlights</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#blogs">Writing</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -891,11 +927,11 @@
   <div class="hero-overlay"></div>
 
   <div class="hero-name-block">
-    <div class="hero-name">SHANKAR<br><span class="accent">DARUR</span></div>
+    <div class="hero-name">SHANKAR M.<br><span class="accent">DARUR</span></div>
   </div>
 
   <div class="hero-info-block">
-    <div class="hero-title">AI Engineer · Full Stack Dev</div>
+    <div class="hero-title">AI & Machine Learning Engineer · Full-Stack Developer · Founder, SEATSIP</div>
     <div class="hero-tagline">Building intelligent systems that bridge research and real-world impact.</div>
   </div>
 
@@ -910,30 +946,38 @@
       <div class="section-eyebrow">About Me</div>
       <h2 class="section-title">AI ENGINEER &<br><span>BUILDER</span></h2>
       <p class="about-body">
-        Final-year AI & ML undergrad at Basaveshwar Engineering College, Bagalkote.
-        I build full-stack AI applications — from RAG pipelines over 59K legal chunks
-        to CMS systems deployed in production. My work lives at the intersection of
-        machine learning research and software engineering, targeting MSc Data Analytics
-        at DCU and TU Dublin next.
+        AI/ML graduate engineer with end-to-end experience designing RAG systems,
+        full-stack applications, and production platforms. At Agribid, an AI-driven
+        agritech company, I built and shipped a dynamic CMS with 20+ modules for a
+        live platform. I am also Founder & Software Developer at SEATSIP, a
+        café-discovery and seat-booking startup in development.
       </p>
       <p class="about-body">
-        Currently: <strong style="color:var(--accent)">SPECTER</strong> (Indian legal RAG),
-        <strong style="color:var(--accent)">CAUKD</strong> (LLM uncertainty delimitation),
-        and <strong style="color:var(--accent)">SeatSip</strong> (F&B startup).
+        <strong style="color:var(--accent)">SPECTER (2025)</strong> is my AI legal
+        assistant project, built with RAG over Indian legal information.
       </p>
       <div class="stat-grid">
         <div class="stat-card">
-          <div class="stat-num">6+</div>
-          <div class="stat-label">Projects</div>
+          <div class="stat-num">20+</div>
+          <div class="stat-label">CMS Modules</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">90</div>
-          <div class="stat-label">Days Internship</div>
+          <div class="stat-num">300+</div>
+          <div class="stat-label">Families Surveyed</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">2</div>
-          <div class="stat-label">Research Papers</div>
+          <div class="stat-num">110+</div>
+          <div class="stat-label">Camp Beneficiaries</div>
         </div>
+      </div>
+      <div class="about-body" style="margin-top:2rem">
+        <strong style="color:var(--accent)">Key Skills</strong><br>
+        Languages: Python, JavaScript, TypeScript, PHP, SQL, HTML, CSS.<br>
+        AI/ML: Generative AI, RAG, LangChain, vector databases, Sentence Transformers, NLP, deep learning.<br>
+        Frontend: React, React Native, Vite, Tailwind CSS, Three.js.<br>
+        Backend: FastAPI, Node.js, Express.js, PHP. Databases: PostgreSQL, MySQL, SQLite, ChromaDB.<br>
+        Platforms: Git/GitHub, Render, Netlify, Vercel, Firebase.<br>
+        Other: REST API, JWT, CI/CD, responsive design, MVC, Agile, vector search, prompt engineering, semantic search, API integration.
       </div>
     </div>
 
@@ -956,66 +1000,26 @@
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="exp-card">
-          <div class="exp-role">Software Engineering Intern</div>
-          <div class="exp-company">Agribid Private Limited · Mumbai</div>
-          <div class="exp-period">Jan 2026 — May 2026 · 90 days</div>
+          <div class="exp-role">Software Development Intern</div>
+          <div class="exp-company">AI-driven Agritech Company · Agribid Private Limited · Mumbai</div>
+          <div class="exp-period">Jan 2026 — Apr 2026</div>
           <div class="exp-desc">
-            Built a full-featured CMS admin panel in React with JWT authentication, 
-            MySQL-backed APIs in Node/Express, and integrated an RSS news aggregation 
-            system directly into the CMS. Developed an AI-powered PDF chatbot using 
-            LangChain and ChromaDB. Also shipped a cricket mini-game for platform 
-            engagement. Mentor: Aniket Dhumal.
+            Engineered and enhanced a production CMS comprising 20+ content management
+            modules for a live agritech platform, including dynamic pages, media assets,
+            news, blogs, tenders, programs, marketplace content, team profiles,
+            testimonials, sponsors, awards, galleries, videos, FAQs, and site-wide
+            settings. Developed an RSS news aggregation platform, responsive React
+            interfaces, and PHP backend modules integrated with MySQL and REST APIs.
+            Identified and resolved bugs and collaborated with a cross-functional team
+            using Git.
           </div>
           <div class="exp-tags">
             <span class="tag">React</span>
             <span class="tag">Node.js</span>
             <span class="tag">Express</span>
+            <span class="tag">PHP</span>
             <span class="tag">MySQL</span>
-            <span class="tag">LangChain</span>
-            <span class="tag">JWT</span>
-            <span class="tag">ChromaDB</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="exp-card">
-          <div class="exp-role">Research — SPECTER</div>
-          <div class="exp-company">AI & ML Dept, BEC · Bagalkote</div>
-          <div class="exp-period">2025 — Present</div>
-          <div class="exp-desc">
-            Building a RAG framework for Indian legal assistance. 59,630-chunk corpus, 
-            146-sample evaluation set. Architecture: FastAPI + LangChain + ChromaDB + 
-            Sentence Transformers. Targeting academic publication. Supervised by 
-            Dr. Bharati Reshmi.
-          </div>
-          <div class="exp-tags">
-            <span class="tag">RAG</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">ChromaDB</span>
-            <span class="tag">Sentence Transformers</span>
-            <span class="tag">NLP</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="exp-card">
-          <div class="exp-role">Research — CAUKD</div>
-          <div class="exp-company">Independent Research</div>
-          <div class="exp-period">2025 — Present</div>
-          <div class="exp-desc">
-            Framework for LLM uncertainty-aware knowledge delimitation. Real empirical 
-            evaluation pipeline using MedQA-USMLE and LegalBench. Focuses on honest 
-            calibration of what LLMs don't know, reducing hallucination in high-stakes domains.
-          </div>
-          <div class="exp-tags">
-            <span class="tag">LLMs</span>
-            <span class="tag">Uncertainty Quantification</span>
-            <span class="tag">MedQA</span>
-            <span class="tag">LegalBench</span>
+            <span class="tag">RSS Parser</span>
           </div>
         </div>
       </div>
@@ -1024,22 +1028,72 @@
         <div class="timeline-dot"></div>
         <div class="exp-card">
           <div class="exp-role">B.E. — Artificial Intelligence & Machine Learning</div>
-          <div class="exp-company">Basaveshwar Engineering College · Bagalkote</div>
-          <div class="exp-period">2022 — 2026 · Final Year</div>
+          <div class="exp-company">Basaveshwar Engineering College · Visvesvaraya Technological University · Karnataka</div>
+          <div class="exp-period">2022 — 2026</div>
           <div class="exp-desc">
-            USN: 2BA22AI007. Coursework in Machine Learning, Deep Learning, 
-            Operating Systems, Data Structures, Computer Vision, and NLP. 
-            Active in robotics, hackathons, and technical events.
+            USN: 2BA22AI007. Coursework in Machine Learning, Deep Learning, NLP,
+            Computer Vision, Reinforcement Learning, Data Structures and Algorithms,
+            DBMS, and Software Engineering.
           </div>
           <div class="exp-tags">
             <span class="tag">ML</span>
             <span class="tag">Deep Learning</span>
             <span class="tag">Computer Vision</span>
             <span class="tag">NLP</span>
+            <span class="tag">Reinforcement Learning</span>
+            <span class="tag">DBMS</span>
           </div>
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     RESUME HIGHLIGHTS
+══════════════════════════════════════ -->
+<section id="highlights">
+  <div class="highlights-inner">
+    <div class="projects-header reveal">
+      <div class="section-eyebrow">Beyond Work</div>
+      <h2 class="section-title">AWARDS &<br><span>COMMUNITY</span></h2>
+    </div>
+    <div class="highlights-grid">
+      <article class="highlight-card">
+        <h3>Awards & Competitions</h3>
+        <ul>
+          <li>1st Prize, Tech Game — VENATUS College-Level Technical Fest, Basaveshwar Engineering College (2024).</li>
+          <li>Team Lead & Competitor, WAVE-2.0 National-Level 24-Hour Hackathon and WAVE State-Level 24-Hour Hackathon, BEC-AICTE IDEA Lab (2023–2024).</li>
+          <li>Competitor, Line Follower Robot Race — TECHNISIUM, Siddaganga Institute of Technology, Tumakuru (2023).</li>
+        </ul>
+      </article>
+      <article class="highlight-card">
+        <h3>Leadership & Technical Activities</h3>
+        <ul>
+          <li>Core Coordinator (Organiser), TechTronix Technical Event, Dept. of AIML, Basaveshwar Engineering College (2025).</li>
+          <li>Led project, hackathon, and robotics teams, coordinating technical implementation and team collaboration.</li>
+          <li>Founded and led a first-year team for a national-level line-follower robotics competition with no prior hardware experience; built the team, secured Idea Lab guidance, and competed against senior students.</li>
+          <li>Regularly sought out by students across departments for final-year project guidance.</li>
+        </ul>
+      </article>
+      <article class="highlight-card">
+        <h3>Community Engagement</h3>
+        <ul>
+          <li>Coordinated a Herkal Village outreach programme: a 300+ family health and needs survey, a free medical camp benefiting 110+ residents with SNMC Medical College, a school plantation drive, and a farmer biofuel-awareness session.</li>
+          <li>Volunteer, Bagalkot Half Marathon (3K/5K/10K/21K), Real Sports Association Bagalkot (2023).</li>
+          <li>Participant, Swachh Bharat cleanliness drive at Bagalkot Railway Station; BEC Youth Red Cross Wing blood donation camp; and plantation drives across two academic years.</li>
+        </ul>
+      </article>
+      <article class="highlight-card">
+        <h3>Certifications</h3>
+        <ul>
+          <li>Supervised Machine Learning: Regression and Classification — Stanford Online (Jun 2026).</li>
+          <li>DevOps, DataOps, MLOps — Duke University, Coursera (Jun 2026).</li>
+          <li>Student Development Programme, DevOps Practices and Tools — Dept. of AIML / IQAC, BEC (Oct 2025).</li>
+          <li>Student Development Programme, Modern SOC Strategies: Automation, AI & SIEM — Dept. of AIML / IQAC, BEC (Aug 2025).</li>
+        </ul>
+      </article>
     </div>
   </div>
 </section>
@@ -1065,14 +1119,18 @@
 
       <div class="project-card">
         <div class="project-num">01</div>
-        <div class="project-name">SPECTER</div>
-        <div class="project-desc">RAG framework for Indian legal assistance. 59,630 document chunks, semantic retrieval, 146-sample evaluation. Bridges the access gap in Indian legal information.</div>
-        <div class="project-arch">React → FastAPI → LangChain → ChromaDB → SentenceTransformers</div>
+        <div class="project-name">SPECTER — AI Legal Assistant</div>
+        <div class="project-desc">2025 RAG application that helps users navigate Indian legal information through context-aware AI chatbot responses, legal document search, and secure lawyer/client registration.</div>
+        <div class="project-arch">React → TypeScript → FastAPI → LangChain → ChromaDB → Sentence Transformers</div>
         <div class="exp-tags">
           <span class="tag">RAG</span>
           <span class="tag">LangChain</span>
           <span class="tag">ChromaDB</span>
           <span class="tag">FastAPI</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Sentence Transformers</span>
+          <span class="tag">Netlify</span>
+          <span class="tag">Render</span>
           <span class="tag">Research</span>
         </div>
         <div class="project-footer" style="margin-top:1.2rem">
@@ -1086,12 +1144,15 @@
       <div class="project-card">
         <div class="project-num">02</div>
         <div class="project-name">Agribid CMS</div>
-        <div class="project-desc">Full-featured content management system for an agricultural B2B platform. JWT auth, RSS news integration, MySQL-backed REST API, live in production.</div>
-        <div class="project-arch">React → Node/Express → MySQL → JWT → Render</div>
+        <div class="project-desc">Production CMS with 20+ content management modules for a live agritech platform, plus an RSS news aggregation platform that collects, categorises, and displays agriculture news from multiple sources.</div>
+        <div class="project-arch">Node.js → Express.js → React → PHP → MySQL → RSS Parser</div>
         <div class="exp-tags">
           <span class="tag">React</span>
           <span class="tag">Node.js</span>
+          <span class="tag">Express.js</span>
+          <span class="tag">PHP</span>
           <span class="tag">MySQL</span>
+          <span class="tag">RSS Parser</span>
           <span class="tag">Production</span>
         </div>
         <div class="project-footer" style="margin-top:1.2rem">
@@ -1109,49 +1170,17 @@
 
       <div class="project-card">
         <div class="project-num">03</div>
-        <div class="project-name">CAUKD</div>
-        <div class="project-desc">LLM uncertainty-aware knowledge delimitation framework. Empirical evaluation using MedQA-USMLE and LegalBench to measure what LLMs genuinely don't know.</div>
-        <div class="project-arch">Python → Transformers → MedQA → LegalBench → Evaluation Pipeline</div>
+        <div class="project-name">SEATSIP</div>
+        <div class="project-desc">Founder-led café-discovery and seat-booking platform in development. Customers discover nearby cafés, check real-time seat availability, reserve tables, and pre-order food. Café owners manage seats, bookings, menus, and customer requests through an admin dashboard. AI demand forecasting and personalised recommendations are planned as a later product phase.</div>
+        <div class="project-arch">React Native → Node.js → PostgreSQL → Prisma ORM → JWT → Google Sign-In</div>
         <div class="exp-tags">
-          <span class="tag">LLMs</span>
-          <span class="tag">Uncertainty</span>
-          <span class="tag">Research</span>
-        </div>
-        <div class="project-footer" style="margin-top:1.2rem">
-          <div class="project-links">
-            <a href="#" class="project-link">Paper →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-num">04</div>
-        <div class="project-name">AI PDF Chatbot</div>
-        <div class="project-desc">Document Q&A system built with LangChain and ChromaDB. Upload any PDF and get accurate, cited answers via semantic search over the document.</div>
-        <div class="project-arch">React → FastAPI → LangChain → ChromaDB → OpenAI</div>
-        <div class="exp-tags">
-          <span class="tag">LangChain</span>
-          <span class="tag">ChromaDB</span>
-          <span class="tag">OpenAI</span>
-        </div>
-        <div class="project-footer" style="margin-top:1.2rem">
-          <div class="project-links">
-            <a href="https://github.com/wrld-of-Shanks/PDF-Chatbot" class="project-link">GitHub →</a>
-            <a href="#" class="project-link">Demo →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-num">05</div>
-        <div class="project-name">SeatSip</div>
-        <div class="project-desc">F&B startup — table booking + digital ordering SaaS for restaurants. Full-stack app with QR-based menus, real-time order management, and analytics dashboard.</div>
-        <div class="project-arch">Next.js → Node → PostgreSQL → Firebase → Vercel</div>
-        <div class="exp-tags">
-          <span class="tag">Startup</span>
-          <span class="tag">Next.js</span>
+          <span class="tag">Founder</span>
+          <span class="tag">React Native</span>
+          <span class="tag">Node.js</span>
           <span class="tag">PostgreSQL</span>
-          <span class="tag">SaaS</span>
+          <span class="tag">Prisma ORM</span>
+          <span class="tag">JWT Authentication</span>
+          <span class="tag">Google Sign-In</span>
         </div>
         <div class="project-footer" style="margin-top:1.2rem">
           <div class="project-links">
@@ -1162,23 +1191,6 @@
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
               </svg>
             </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-num">06</div>
-        <div class="project-name">AI House Generator</div>
-        <div class="project-desc">Generative AI tool for architectural concepts. Input style preferences and constraints, get photorealistic house design concepts powered by diffusion models.</div>
-        <div class="project-arch">React → FastAPI → Stable Diffusion → ControlNet</div>
-        <div class="exp-tags">
-          <span class="tag">Generative AI</span>
-          <span class="tag">Stable Diffusion</span>
-          <span class="tag">Python</span>
-        </div>
-        <div class="project-footer" style="margin-top:1.2rem">
-          <div class="project-links">
-            <a href="#" class="project-link">GitHub →</a>
           </div>
         </div>
       </div>
@@ -1206,7 +1218,7 @@
       <div class="project-card">
         <div class="project-num">D/03</div>
         <div class="project-name">SeatSip Brand</div>
-        <div class="project-desc">Brand identity and UI design for the SeatSip F&B SaaS — logo, color system, component library, and marketing landing page.</div>
+        <div class="project-desc">Brand identity and interface concepts for the SeatSip café-discovery and booking platform.</div>
         <div class="exp-tags">
           <span class="tag">Branding</span><span class="tag">Figma</span><span class="tag">Tailwind</span>
         </div>
@@ -1252,18 +1264,10 @@
 
       <div class="blog-card">
         <div class="blog-cat">LLMs · Research</div>
-        <div class="blog-title">What LLMs Don't Know: CAUKD Framework</div>
-        <div class="blog-summary">When your model hallucinates on medical and legal questions, you have a real problem. Here's how I'm building a framework to quantify that uncertainty.</div>
-        <div class="blog-footer">
-          <span class="blog-date">2026</span>
-          <span class="blog-read">Read →</span>
-        </div>
-      </div>
-
       <div class="blog-card">
         <div class="blog-cat">Full Stack · CMS</div>
-        <div class="blog-title">Building a Production CMS in React + Node</div>
-        <div class="blog-summary">JWT auth, MySQL, RSS feeds, and role-based access. A walkthrough of the Agribid CMS from schema design to deployment on Render.</div>
+        <div class="blog-title">Building a 20+ Module Agritech CMS</div>
+        <div class="blog-summary">A production content platform with React interfaces, PHP backend modules, MySQL integration, REST APIs, and agriculture-focused RSS news aggregation.</div>
         <div class="blog-footer">
           <span class="blog-date">2026</span>
           <span class="blog-read">Read →</span>
@@ -1282,23 +1286,13 @@
 
       <div class="blog-card">
         <div class="blog-cat">Startup</div>
-        <div class="blog-title">SeatSip: Building a F&B SaaS from Zero</div>
-        <div class="blog-summary">From market research to MVP — QR menus, table booking, real-time orders. What I'd do differently and where we're going next.</div>
+        <div class="blog-title">SEATSIP: Building a Café Booking Platform</div>
+        <div class="blog-summary">A café-discovery and seat-booking platform in development, with table reservations, food pre-orders, and tools for café owners.</div>
         <div class="blog-footer">
-          <span class="blog-date">2026</span>
           <span class="blog-read">Read →</span>
         </div>
       </div>
 
-      <div class="blog-card">
-        <div class="blog-cat">Career</div>
-        <div class="blog-title">Applying for MSc in Ireland as an Indian Student</div>
-        <div class="blog-summary">SOP, LORs, IELTS, salary expectations, DCU vs TU Dublin — everything I researched and the decisions I made.</div>
-        <div class="blog-footer">
-          <span class="blog-date">2026</span>
-          <span class="blog-read">Read →</span>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -1313,17 +1307,18 @@
       <div class="section-eyebrow" style="justify-content:center">Get In Touch</div>
       <h2 class="contact-big">LET'S<br>BUILD<br><span>TOGETHER</span></h2>
       <p class="contact-sub">
-        Open to MSc opportunities in Ireland, AI engineering roles, freelance projects, and research collaborations.
+        Open to AI/ML engineering and full-stack development opportunities, projects, and research collaborations.
       </p>
-      <a href="mailto:shankar@example.com" class="contact-email">SHANKAR.DARUR@EMAIL.COM</a>
+      <a href="mailto:shankar04darur@gmail.com" class="contact-email">shankar04darur@gmail.com</a>
+      <div class="contact-email"><a href="tel:+919321526724" style="color:inherit;text-decoration:none">+91 93215 26724</a></div>
       <div class="contact-location">
         <div class="location-dot"></div>
-        Bagalkote, Karnataka, India · Open to Relocation
+        Bagalkote, Karnataka, India
       </div>
       <div class="contact-links">
-        <a href="#" class="contact-btn primary">Download Resume →</a>
-        <a href="https://github.com" class="contact-btn secondary">GitHub</a>
-        <a href="https://linkedin.com" class="contact-btn secondary">LinkedIn</a>
+        <a href="/Shankar_Darur_CV.pdf" class="contact-btn primary">Download Resume →</a>
+        <a href="https://github.com/wrld-of-Shanks" class="contact-btn secondary">GitHub</a>
+        <a href="https://www.linkedin.com/in/shankar-m-darur07/" class="contact-btn secondary">LinkedIn</a>
       </div>
     </div>
   </div>
@@ -1334,9 +1329,9 @@
   <div class="footer-copy">© 2026 Shankar Darur · Built with intent.</div>
   <div class="footer-links">
     <a href="#hero">Top</a>
-    <a href="https://github.com">GitHub</a>
-    <a href="https://linkedin.com">LinkedIn</a>
-    <a href="mailto:shankar@example.com">Email</a>
+    <a href="https://github.com/wrld-of-Shanks">GitHub</a>
+    <a href="https://www.linkedin.com/in/shankar-m-darur07/">LinkedIn</a>
+    <a href="mailto:shankar04darur@gmail.com">Email</a>
   </div>
 </footer>
 

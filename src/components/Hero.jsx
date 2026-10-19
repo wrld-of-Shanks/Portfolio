@@ -70,7 +70,7 @@ export default function Hero() {
           sm:bottom-8 sm:left-8 md:left-12"
       >
         <h1 className="font-display leading-none" style={{ fontSize: 'clamp(2.5rem, 7vw, 7.5rem)', letterSpacing: '0.05em' }}>
-          SHANKAR<br />
+          SHANKAR M.<br />
           <span className="text-accent">DARUR</span>
         </h1>
       </motion.div>
@@ -83,7 +83,7 @@ export default function Hero() {
         className="absolute bottom-8 right-5 sm:bottom-10 sm:right-8 md:right-12 z-[5] text-right hidden sm:block"
       >
         <div className="font-mono text-accent text-[0.75rem] tracking-[0.14em] uppercase mb-2">
-          AI Engineer · Full Stack Dev
+          AI/ML Engineer · Founder, SEATSIP
         </div>
         <div className="text-[0.88rem] leading-relaxed max-w-[240px] ml-auto" style={{ color: 'rgba(242,242,242,0.6)' }}>
           Building intelligent systems that bridge research and real-world impact.

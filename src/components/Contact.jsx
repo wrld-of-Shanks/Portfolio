@@ -70,7 +70,7 @@ export default function Contact() {
         </motion.p>
 
         <motion.a
-          href="mailto:shankar04darur@email.com"
+          href="mailto:shankar04darur@gmail.com"
           initial={{ y: 40, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.36, ease: [0.16, 1, 0.3, 1] }}
@@ -78,8 +78,16 @@ export default function Contact() {
           className="font-display text-[1.2rem] tracking-[0.12em] mb-6 inline-block no-underline"
           style={{ color: '#111' }}
         >
-          shankar04darur@EMAIL.COM
+          shankar04darur@gmail.com
         </motion.a>
+
+        <a
+          href="tel:+919321526724"
+          className="block font-mono text-[0.82rem] tracking-[0.08em] mb-6 no-underline"
+          style={{ color: '#111' }}
+        >
+          +91 93215 26724
+        </a>
 
         <motion.div
           initial={{ y: 40, opacity: 0 }}
@@ -89,7 +97,7 @@ export default function Contact() {
         >
           <div className="w-[6px] h-[6px] rounded-full animate-pulse-glow" style={{ background: '#C40000' }} />
           <span className="font-mono text-[0.7rem] tracking-[0.1em]" style={{ color: '#111' }}>
-            Bagalkote, Karnataka, India · Open to Relocation
+            Bagalkote, Karnataka, India
           </span>
         </motion.div>
 

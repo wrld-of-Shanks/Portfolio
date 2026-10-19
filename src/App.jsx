@@ -5,6 +5,7 @@ import Nav from './components/Nav'
 import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
+import Highlights from './components/Highlights'
 import Work from './components/Work'
 import Gallery from './components/Gallery'
 import Personality from './components/Personality'
@@ -12,7 +13,7 @@ import Hobby from './components/Hobby'
 import Contact from './components/Contact'
 import MusicToggle from './components/MusicToggle'
 
-const sectionIds = ['hero', 'about', 'experience', 'projects', 'blogs', 'personality', 'hobbies', 'contact']
+const sectionIds = ['hero', 'about', 'experience', 'highlights', 'projects', 'blogs', 'personality', 'hobbies', 'contact']
 
 export default function App() {
   const scrollProgress = useRef(0)
@@ -109,6 +110,7 @@ export default function App() {
         </section>
         <About />
         <Skills />
+        <Highlights />
         <Work />
         <Gallery />
         <Personality />

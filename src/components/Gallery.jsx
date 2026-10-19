@@ -22,9 +22,8 @@ const blogs = [
   },
   {
     cat: 'Startup',
-    title: 'SeatSip: Building a F&B SaaS from Zero',
-    summary: 'From market research to MVP — QR menus, table booking, real-time orders. What I\'d do differently and where we\'re going next.',
-    date: '2026',
+    title: 'SeatSip: Building a Café Booking Platform',
+    summary: 'A café-discovery and seat-booking platform in development, with table reservations, food pre-orders, and tools for café owners.',
   },
 ]
 

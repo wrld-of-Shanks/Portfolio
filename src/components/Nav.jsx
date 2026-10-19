@@ -5,11 +5,12 @@ const sections = [
   { id: 'hero', label: 'SD.', name: 'Home' },
   { id: 'about', label: '02', name: 'About' },
   { id: 'experience', label: '03', name: 'Experience' },
-  { id: 'projects', label: '04', name: 'Projects' },
-  { id: 'blogs', label: '05', name: 'Writing' },
-  { id: 'personality', label: '06', name: 'Personality' },
-  { id: 'hobbies', label: '07', name: 'Hobbies' },
-  { id: 'contact', label: '08', name: 'Contact' },
+  { id: 'highlights', label: '04', name: 'Highlights' },
+  { id: 'projects', label: '05', name: 'Projects' },
+  { id: 'blogs', label: '06', name: 'Writing' },
+  { id: 'personality', label: '07', name: 'Personality' },
+  { id: 'hobbies', label: '08', name: 'Hobbies' },
+  { id: 'contact', label: '09', name: 'Contact' },
 ]
 
 export default function Nav({ currentSection }) {

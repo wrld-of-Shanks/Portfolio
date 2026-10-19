@@ -3,18 +3,19 @@ import { motion, useInView } from 'motion/react'
 import { useRef } from 'react'
 
 const stats = [
-  { num: '6+', label: 'Projects' },
-  { num: '90', label: 'Days Internship' },
-  { num: '2', label: 'Research Papers' },
+  { num: '20+', label: 'CMS Modules' },
+  { num: '300+', label: 'Families Surveyed' },
+  { num: '110+', label: 'Camp Beneficiaries' },
 ]
 
 const skills = [
-  { label: 'Python / PyTorch', w: '92%' },
-  { label: 'React / Next.js', w: '85%' },
-  { label: 'LLMs / RAG', w: '90%' },
-  { label: 'Node.js / Express', w: '80%' },
-  { label: 'FastAPI / Flask', w: '88%' },
-  { label: 'SQL / ChromaDB', w: '82%' },
+  { label: 'Languages: Python · JavaScript · TypeScript · PHP · SQL · HTML · CSS', w: '92%' },
+  { label: 'AI/ML: Generative AI · RAG · LangChain · Vector Databases · Sentence Transformers · NLP · Deep Learning', w: '90%' },
+  { label: 'Frontend: React · React Native · Vite · Tailwind CSS · Three.js', w: '85%' },
+  { label: 'Backend: FastAPI · Node.js · Express.js · PHP', w: '86%' },
+  { label: 'Databases: PostgreSQL · MySQL · SQLite · ChromaDB', w: '82%' },
+  { label: 'Platforms: Git/GitHub · Render · Netlify · Vercel · Firebase', w: '80%' },
+  { label: 'Other: REST API · JWT · CI/CD · Responsive Design · MVC · Agile · Vector Search · Prompt Engineering · Semantic Search · API Integration', w: '78%' },
 ]
 
 export default function About() {
@@ -90,11 +91,11 @@ export default function About() {
               color: '#555',
               marginBottom: '1.5rem'
             }}>
-              Final-year AI & ML undergrad at Basaveshwar Engineering College, Bagalkote.
-              I build full-stack AI applications — from RAG pipelines over 59K legal chunks
-              to CMS systems deployed in production. My work lives at the intersection of
-              machine learning research and software engineering, targeting MSc Data Analytics
-              at DCU and TU Dublin next.
+              AI/ML graduate engineer with end-to-end experience designing RAG systems,
+              full-stack applications, and production platforms. At Agribid, an AI-driven
+              agritech company, I built and shipped a dynamic CMS with 20+ modules for a
+              live platform. I am also Founder & Software Developer at SEATSIP, a
+              café-discovery and seat-booking startup in development.
             </p>
 
             <p style={{
@@ -103,8 +104,8 @@ export default function About() {
               color: '#555',
               marginBottom: '2rem'
             }}>
-              Currently: <strong style={{ color: '#C40000' }}>SPECTER</strong> (Indian legal RAG)
-              and <strong style={{ color: '#C40000' }}> SeatSip</strong> (F&B startup).
+              <strong style={{ color: '#C40000' }}>SPECTER (2025)</strong> is my AI legal
+              assistant project, built with RAG over Indian legal information.
             </p>
 
             <div className="grid grid-cols-3 gap-3 sm:gap-4 mt-8">

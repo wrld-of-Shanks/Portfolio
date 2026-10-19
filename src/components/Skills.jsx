@@ -3,24 +3,17 @@ import { motion, useInView } from 'motion/react'
 
 const timeline = [
   {
-    role: 'Software Engineering Intern',
-    company: 'Agribid Private Limited · Mumbai',
-    period: 'Jan 2026 — May 2026 · 90 days',
-    desc: 'Built a full-featured CMS admin panel in React with JWT authentication, MySQL-backed APIs in Node/Express, and integrated an RSS news aggregation system directly into the CMS. Developed an AI-powered PDF chatbot using LangChain and ChromaDB.',
-    tags: ['React', 'Node.js', 'Express', 'MySQL', 'LangChain', 'JWT', 'ChromaDB'],
-  },
-  {
-    role: 'Research — SPECTER',
-    company: 'AI & ML Dept, BEC · Bagalkote',
-    period: '2025 — Present',
-    desc: 'Building a RAG framework for Indian legal assistance. 59,630-chunk corpus, 146-sample evaluation set. Architecture: FastAPI + LangChain + ChromaDB + Sentence Transformers. Targeting academic publication.',
-    tags: ['RAG', 'FastAPI', 'ChromaDB', 'Sentence Transformers', 'NLP'],
+    role: 'Software Development Intern',
+    company: 'AI-driven Agritech Company · Agribid Private Limited · Mumbai',
+    period: 'Jan 2026 — Apr 2026',
+    desc: 'Built and shipped a production CMS with 20+ content modules for a live agritech platform, covering dynamic pages, media, news, blogs, tenders, programs, marketplace content, teams, testimonials, sponsors, awards, galleries, videos, FAQs, and site settings. Developed an RSS news platform that collects, categorises, and displays agriculture news from multiple sources. Built responsive React interfaces and PHP backend modules integrated with MySQL and REST APIs, resolved bugs to improve reliability, and collaborated with a cross-functional team using Git.',
+    tags: ['React', 'Node.js', 'Express', 'PHP', 'MySQL', 'RSS Parser', 'REST API'],
   },
   {
     role: 'B.E. — Artificial Intelligence & Machine Learning',
-    company: 'Basaveshwar Engineering College · Bagalkote',
-    period: '2022 — 2026 · Final Year',
-    desc: 'USN: 2BA22AI007. Coursework in Machine Learning, Deep Learning, Operating Systems, Data Structures, Computer Vision, and NLP.',
+    company: 'Basaveshwar Engineering College · VTU · Bagalkote',
+    period: '2022 — 2026',
+    desc: 'USN: 2BA22AI007. Coursework in Machine Learning, Deep Learning, NLP, Computer Vision, Reinforcement Learning, Data Structures and Algorithms, DBMS, and Software Engineering.',
     tags: ['ML', 'Deep Learning', 'Computer Vision', 'NLP'],
   },
 ]
